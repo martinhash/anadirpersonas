@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html ng-app="universidadApp" ng-controller="mainCtrl">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Universidad</title>
+
+
+        <!-- Incluir Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="css/animate.css">
+
+        <!-- Estilo personalizado -->
+        <link rel="stylesheet" href="css/style.css">
+
+        <!-- Incluir AngularJS -->
+        <script src="js/lib/angular.min.js"></script>
+        <script src="js/lib/jquery-3.3.1.min.js"></script>
+        <script src="js/lib/bootstrap.min.js"></script>
+        <script src="js/app.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+       
+
+
+        
+    </head>    
+    <body>
+        
+        
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <td>
+                                    Nombre
+                                </td>
+                                <td>
+                                    Apellido
+                                </td>
+                                <td>
+                                    Edad
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="persona in personas">
+                                <td>
+                                    {{persona.nombre}}
+                                </td>
+                                <td>
+                                    {{persona.apellido}}
+                                </td>
+                                <td>
+                                    {{persona.edad}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="10">
+                                    <button ng-disabled="personas == ''" type="button" style="width:100%;" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Ver información de útima persona</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <form>
+                                <div> <input ng-model="nuevoNombre" required="true" type="text" class="form form-control" placeholder="Agregar Nombre"></div><br>
+                                <div> <input ng-model="nuevoApellido" required="true" type="text" class="form form-control" placeholder="Agregar Apellido"> </div><br>
+                                <div> <input ng-model="nuevaEdad" required="true" type="number" class="form form-control" placeholder="Agregar Edad"> </div><br>
+                                <div class="row">
+                                    
+                                        <div class="col-md-6"> <button ng-click="fnAgregar()" class="btn btn-success">Agregar</button> </div>
+                                        <div class="col-md-6"> <button ng-click="fnEliminar()" class="btn btn-warning" ng-disabled="personas == ''">Eliminar Personas</button> </div>
+                                </div>
+                        </form>
+                       
+                    </div>
+                </div>
+            </div>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
+        <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"> <span ng-model="nuevoNombre"+> {{persona.nombre}} </span> </h4>
+                  </div>
+                  <div class="modal-body">
+                    <p><span> {{persona.nombre}} </span></p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+</div>
+
+
+
+        </div>
+
+
+    </body>
+
+</html>
